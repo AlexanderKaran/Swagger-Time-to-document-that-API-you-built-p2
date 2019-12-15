@@ -49,18 +49,53 @@ router.post("/users", (req, res, next) => {
  *    get:
  *      summary: Get all users
  *      tags: [Users]
+ *      parameters:
+ *        - in: query
+ *          name: name
+ *          schema:
+ *            type: string
+ *          description: Name you want users to match
  *      responses:
  *        "200":
  *          description: An array of users
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                type: array
+ *                items:
+ *                  $ref: '#/components/schemas/User'
  */
 router.get("/users", (req, res, next) => {
   const userOne = new User("Alexander", "fake@gmail.com");
   const userTwo = new User("Ryan", "fakeagain@gmail.com");
   res.json({ userOne, userTwo });
+});
+
+/**
+ * @swagger
+ * path:
+ *  /users/{id}:
+ *    get:
+ *      summary: Get a user by id
+ *      tags: [Users]
+ *      parameters:
+ *        - in: path
+ *          name: userId
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: Id of the user
+ *      responses:
+ *        "200":
+ *          description: An users object
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/User'
+ */
+router.get("/users/:id", (req, res, next) => {
+  const userOne = new User("Alexander", "fake@gmail.com");
+  res.json({ userOne });
 });
 
 // Swagger set up
