@@ -80,7 +80,7 @@ router.get("/users", (req, res, next) => {
  *      tags: [Users]
  *      parameters:
  *        - in: path
- *          name: userId
+ *          name: id
  *          schema:
  *            type: string
  *          required: true
