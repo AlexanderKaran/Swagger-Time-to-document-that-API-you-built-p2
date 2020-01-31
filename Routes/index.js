@@ -74,7 +74,7 @@ router.get("/users", (req, res, next) => {
 /**
  * @swagger
  * path:
- *  /users/{id}:
+ *  /users/{userId}:
  *    get:
  *      summary: Get a user by id
  *      tags: [Users]
@@ -93,7 +93,7 @@ router.get("/users", (req, res, next) => {
  *              schema:
  *                $ref: '#/components/schemas/User'
  */
-router.get("/users/:id", (req, res, next) => {
+router.get("/users/:userId", (req, res, next) => {
   const userOne = new User("Alexander", "fake@gmail.com");
   res.json({ userOne });
 });
